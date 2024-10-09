@@ -26,4 +26,13 @@ public class SpringWebZeroApplication {
 		System.out.println("получено имя " + name);//для отладки
 		return "Здравствуй, "+name+"!";
 	}
+
+	//реакция контроллера на http-запрос, в котором указано
+	// <наш сайт>/sumresult?a=<числовое значение>&b=<числовое значение>
+	@GetMapping("/sumresult")
+	public String sumresult(@RequestParam(value = "a", defaultValue = "0") int a,
+							@RequestParam(value = "b", defaultValue = "0") int b) {
+		System.out.println("получены числа a = " + a+" и b = "+b);//для отладки
+		return "Сумма чисел равна "+(a+b);
+	}
 }
